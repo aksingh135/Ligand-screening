@@ -1,5 +1,11 @@
 # Developing a workflow for GPR119 agonist screening using machine learning techniques 
 
+### Introduction:
+This project focuses on reducing the experimental search space by computationally detecting GPR119 ligands using machine learning techniques. Transfer learning is leveraged here by employing a pre-trained model: **ChemBERTa** to build classifiers to distinguish between GPR119 binder and non-binders. Docking scores from AutoDock Vina and experimental data obtained from in-lab assays and [GlassDB](https://zhanggroup.org/GLASS/) were used as features for this model. This repository contains all the scripts and the subsequent data obtained for this pipeline. Conclusionary remarks about the outcomes and potential use of the obtained models can be found at the end of this document.
+
+### Outline of workflow
+
+### Repository Structure and Script Functionalities
 1. Training data collection
    1. Docking positive and negative datasets
 
@@ -8,7 +14,7 @@
          - Comes with combined sdf data
          - Split it using obabel: `obabel Q8TDV5.sdf -O p\_ligand.sdf -m`
          - 1429 files
-         - Converted to pdbqt using `obabel: obabel \*.sdf -opdbqt -m`
+         - Converted to pdbqt using obabel: `obabel \*.sdf -opdbqt -m`
          - dock
 
       Negative dataset: 
@@ -30,7 +36,7 @@
    1. Merging\_logs.sh
    1. logs\_extract\_merged.py
    1. Merged\_log.txt
-   1. Cleaning step: `awk ‘/^p\_lig/’ merged\_log.txt > output.txt`
+   1. Cleaning step: awk ‘/^p\_lig/’ merged\_log.txt > output.txt
    1. View output.txt in excel
 1. Feature selection
 
