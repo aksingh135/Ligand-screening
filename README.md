@@ -27,18 +27,21 @@ This project focuses on reducing the experimental search space by computationall
         - File conversion from sdf to pdbqt was done using [Meeko](https://github.com/forlilab/Meeko) `bash n_sdf2pdbqt_meeko.sh`.
 
 - Docking data collection:
-   1. Log\_file\_change.sh #to replace the first 1. With filename so we can directly extract the best binding score without losing file name
-   1. Merging\_logs.sh
-   1. logs\_extract\_merged.py
-   1. Merged\_log.txt
-   1. Cleaning step: `awk ‘/^p\_lig/’ merged\_log.txt > output.txt`
-   1. View output.txt in excel
+    - The scripts used for extracting docking score were run in the order:
+       1. Log\_file\_change.sh (Replaces the first numbering associated with the top binding score '1.' in the log file with filename so we can directly extract the best docking score without losing the ligand name.)
+       2. Merging\_logs.sh (Merges all of the docking logs obtained from the multiple-ligand docking and stores it in: *all\_logs_n.txt*.)
+       3. logs\_extract\_merged.py (Extracts the top binding score in the merged doc *all\_logs_n.txt*.)
+       4. Merged\_log.txt
+       5. Cleaning step: `awk ‘/^n_ligand/’ merged_log.txt > output.txt` 
+       6. View output.txt in excel
+     **NOTE:** 'n\_' was replaced with 'p\_' when extracting docking scores for the positive dataset. 
 
 ### 2. Feature selection
-
-- Docking data: convert to binary using script: [BioAssay_Activity.ipynb](https://colab.research.google.com/drive/1lHBy0eFzV4cYg5f3pb8xqcsQuLhCiIyM#scrollTo=qWW7desIV_d9)
-- Experimental: convert to binary
+Docking scores and experimental data were used as features for the classification models.
+- Docking data was converted to a binary format using a threshold determined via EC50 values comparable to GPR119 agonist OEA: [BioAssay_Activity.ipynb](https://colab.research.google.com/drive/1lHBy0eFzV4cYg5f3pb8xqcsQuLhCiIyM#scrollTo=qWW7desIV_d9) anything at the threshold and above was labeled with '1' and anything below was '0'.
+- Experimental data was converted to binary such that '1' was assigned to binding and '0' indicated non-binding.
 
 ### 3. LLM model and predictions 
+Intially a multi-label ChemBERTa classification was constructed with an attempt to capture patterns in non-agreeing (differing docking and experimental labels) to build a more robust model. 
 - Multi-label: [Multi-label_classification_with_ChemBERTa.ipynb](https://colab.research.google.com/drive/1720FLC2LUZ_Y_Yysk5MNVU_oKv5kNdCd) 
 - Binary: [Classification_with_ChemBERTa.ipynb](https://colab.research.google.com/drive/1NIQIhbKqvZGcaEqI0mABlC4jflefuJFT)
