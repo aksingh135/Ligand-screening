@@ -3,27 +3,27 @@
 1. Training data collection
    1. Docking positive and negative datasets
 
-Positive dataset: 
+      Positive dataset: 
 
-- Comes with combined sdf data
-- Split it using obabel: obabel Q8TDV5.sdf -O p\_ligand.sdf -m
-- 1429 files
-- Converted to pdbqt using obabel: obabel \*.sdf -opdbqt -m 
-- dock
+         - Comes with combined sdf data
+         - Split it using obabel: obabel Q8TDV5.sdf -O p\_ligand.sdf -m
+         - 1429 files
+         - Converted to pdbqt using obabel: obabel \*.sdf -opdbqt -m 
+         - dock
 
-Negative dataset: 
+      Negative dataset: 
 
-- Obtain pubchem ids  using CAS using script: [Adding_PubChemID.ipynb](https://colab.research.google.com/drive/16O843ywIjOWKuvpDEvfsmMGSJ8GrKdsY#scrollTo=pf98cWOiVa22)
-- Using cids obtain 3d sdf structures that are available 
-- Sdf to pdbqt using meeko (pic of script)
-- dock
+         - Obtain pubchem ids  using CAS using script: [Adding_PubChemID.ipynb]        (https://colab.research.google.com/drive/16O843ywIjOWKuvpDEvfsmMGSJ8GrKdsY#scrollTo=pf98cWOiVa22)
+         - Using cids obtain 3d sdf structures that are available 
+         - Sdf to pdbqt using meeko (pic of script)
+         - dock
 
-DOCK: run\_vina\_pos.sh
+      DOCK: run\_vina\_pos.sh
 
-Conf file: conf\_all\_p.txt
-Report: dock\_pos.out
-Receptor: pos\_protein.pdbqt
-Docking command job script: p\_docking\_cmds.sbatch
+      Conf file: conf\_all\_p.txt
+      Report: dock\_pos.out
+      Receptor: pos\_protein.pdbqt
+      Docking command job script: p\_docking\_cmds.sbatch
 
 1. Collecting docking data
    1. Log\_file\_change.sh #to replace the first 1. With filename so we can directly extract the best binding score without losing file name
