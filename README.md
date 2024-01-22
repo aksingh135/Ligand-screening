@@ -6,9 +6,9 @@
       Positive dataset: 
 
          - Comes with combined sdf data
-         - Split it using obabel: *obabel Q8TDV5.sdf -O p\_ligand.sdf -m*
+         - Split it using obabel: obabel Q8TDV5.sdf -O p\_ligand.sdf -m
          - 1429 files
-         - Converted to pdbqt using obabel: *obabel \*.sdf -opdbqt -m* 
+         - Converted to pdbqt using obabel: obabel \*.sdf -opdbqt -m
          - dock
 
       Negative dataset: 
