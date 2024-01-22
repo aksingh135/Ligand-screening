@@ -1,19 +1,17 @@
 # Developing a workflow for GPR119 agonist screening using machine learning techniques 
 
-### Introduction:
-This project focuses on reducing the experimental search space by computationally detecting GPR119 ligands using machine learning techniques. Transfer learning is leveraged here by employing a pre-trained model: **ChemBERTa** to build classifiers to distinguish between GPR119 binder and non-binders. Docking scores from AutoDock Vina and experimental data obtained from in-lab assays and [GlassDB](https://zhanggroup.org/GLASS/) were used as features for this model. This repository contains all the scripts and the subsequent data obtained for this pipeline. Conclusionary remarks about the outcomes and potential use of the obtained models can be found at the end of this document.
+## Introduction:
+This project focuses on reducing the experimental search space by computationally detecting GPR119 ligands using machine learning techniques. Transfer learning is leveraged here by employing a pre-trained model: **ChemBERTa** to build classifiers to distinguish between GPR119 binder and non-binders. Docking scores from AutoDock Vina and experimental data obtained from in-lab assays and [GlassDB](https://zhanggroup.org/GLASS/) were used as features for this model. This repository contains all the scripts and the subsequent data obtained for this pipeline. For a comprehensive understanding of the results and the potential uses of the models derived, please refer to the concluding remarks at the end of this document.
 
-### Project outline:
+## Project outline:
 <p align="center">
   <img width="550" height="400" alt="image" src="https://github.gatech.edu/storage/user/68782/files/a1ed9476-a5da-4bb1-9dba-19a3925d9267">
 </p>
 
-### Repository Structure and Script Functionalities
-1. Training data collection
-   1. Docking positive and negative datasets
-
-      Positive dataset: 
-
+## Repository Structure and Script Functionalities
+### 1. Training Data Collection
+#### 1.1 Docking Positive and Negative Datasets
+        Positive dataset: 
          - Comes with combined sdf data
          - Split it using obabel: `obabel Q8TDV5.sdf -O p\_ligand.sdf -m`
          - 1429 files
