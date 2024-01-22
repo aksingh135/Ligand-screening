@@ -1,6 +1,6 @@
 #! /bin/bash
 
-for f in n_ligand*.pdbqt; do
+for f in p_ligand*.pdbqt; do
     b=`basename $f .pdbqt`
     echo Processing ligand $b
     mkdir -p $b
