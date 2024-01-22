@@ -3,8 +3,8 @@
 ### Introduction:
 This project focuses on reducing the experimental search space by computationally detecting GPR119 ligands using machine learning techniques. Transfer learning is leveraged here by employing a pre-trained model: **ChemBERTa** to build classifiers to distinguish between GPR119 binder and non-binders. Docking scores from AutoDock Vina and experimental data obtained from in-lab assays and [GlassDB](https://zhanggroup.org/GLASS/) were used as features for this model. This repository contains all the scripts and the subsequent data obtained for this pipeline. Conclusionary remarks about the outcomes and potential use of the obtained models can be found at the end of this document.
 
-### Outline of workflow
-<img width="852" alt="image" src="https://github.gatech.edu/storage/user/68782/files/a1ed9476-a5da-4bb1-9dba-19a3925d9267">
+### Outline of workflow:
+<img width="840" alt="image" src="https://github.gatech.edu/storage/user/68782/files/a1ed9476-a5da-4bb1-9dba-19a3925d9267">
 
 ### Repository Structure and Script Functionalities
 1. Training data collection
