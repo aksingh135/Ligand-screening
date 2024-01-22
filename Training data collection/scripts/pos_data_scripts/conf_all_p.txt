@@ -1,4 +1,4 @@
-receptor= protein.pdbqt
+receptor= pos_protein.pdbqt
 ligand = p_ligand*.pdbqt
 
 center_x= 92.04
