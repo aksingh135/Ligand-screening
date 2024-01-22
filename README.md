@@ -42,6 +42,10 @@ Docking scores and experimental data were used as features for the classificatio
 - Experimental data was converted to binary such that '1' was assigned to binding and '0' indicated non-binding.
 
 ### 3. LLM model and predictions 
-Intially a multi-label ChemBERTa classification was constructed with an attempt to capture patterns in non-agreeing (differing docking and experimental labels) to build a more robust model. 
+Originally, the multi-label ChemBERTa classification aimed to capture patterns in non-agreeing instances with a specific focus on recognizing "confusing agonists." Since a lack of equal label representation in the data was realized, a simpler binary classifier leveraging only the agreeing experimental and docking data was implemented. This model aims for a more straightforward distinction between positive and negative instances, acknowledging the limitations posed by the insufficient data for capturing the intricacies of confusing agonists. Model predictions were done on the Anti-diabetic compound library as GPR119 is often a therapeutic target for diabetes.
 - Multi-label: [Multi-label_classification_with_ChemBERTa.ipynb](https://colab.research.google.com/drive/1720FLC2LUZ_Y_Yysk5MNVU_oKv5kNdCd) 
 - Binary: [Classification_with_ChemBERTa.ipynb](https://colab.research.google.com/drive/1NIQIhbKqvZGcaEqI0mABlC4jflefuJFT)
+
+### 4. Outcomes, conclusions and future applications
+Upon addressing the identified issues, not only was a significant increase in model metrics observed, but the binary model also made more meaningful predictions *(assigning the '11' label to one-third of the Anti-diabetic compound library)*. Hence, for limited experimental data, the established pipeline with binary classification using ChemBERTa has the potential to screen small molecules for potential ligands. 
+GPCRs with larger datasets can leverage the ChemBERTa multi-label classifier for capturing "confusing agonists," thereby offering a more nuanced and comprehensive analysis with larger datasets. By teaching the model to identify non-agreeing experimental and docking chemicals, the search for potential ligands becomes more refined, potentially increasing the success rate in experimental replication of computationally predicted binders.
