@@ -10,20 +10,20 @@ This project focuses on reducing the experimental search space by computationall
 
 ## Repository Structure and Script Functionalities
 ### 1. Training Data Collection
-#### 1.1 Docking Positive and Negative Datasets
-        Positive dataset: 
-         - Comes with combined sdf data
-         - Split it using obabel: `obabel Q8TDV5.sdf -O p\_ligand.sdf -m`
-         - 1429 files
-         - Converted to pdbqt using obabel: `obabel \*.sdf -opdbqt -m`
-         - dock
+   a) Docking Positive and Negative Datasets
+         - Positive dataset:
+               - Comes with combined sdf data
+               - Split it using obabel: `obabel Q8TDV5.sdf -O p\_ligand.sdf -m`
+               - 1429 files
+               - Converted to pdbqt using obabel: `obabel \*.sdf -opdbqt -m`
+               - dock
 
-      Negative dataset: 
+         - Negative dataset: 
 
-         - Obtain pubchem ids  using CAS using script: [Adding_PubChemID.ipynb]        (https://colab.research.google.com/drive/16O843ywIjOWKuvpDEvfsmMGSJ8GrKdsY#scrollTo=pf98cWOiVa22)
-         - Using cids obtain 3d sdf structures that are available 
-         - Sdf to pdbqt using meeko (pic of script)
-         - dock
+             - Obtain pubchem ids  using CAS using script: [Adding_PubChemID.ipynb]        (https://colab.research.google.com/drive/16O843ywIjOWKuvpDEvfsmMGSJ8GrKdsY#scrollTo=pf98cWOiVa22)
+             - Using cids obtain 3d sdf structures that are available 
+             - Sdf to pdbqt using meeko (pic of script)
+             - dock
 
       DOCK: run\_vina\_pos.sh
 
