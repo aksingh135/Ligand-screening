@@ -1,7 +1,7 @@
 # Developing a workflow for GPR119 agonist screening using machine learning techniques 
 
 ## Introduction:
-This project focuses on reducing the experimental search space by computationally detecting GPR119 ligands using machine learning techniques. Transfer learning is leveraged here by employing a pre-trained model: **[ChemBERTa](https://arxiv.org/abs/2010.09885)** to build classifiers to distinguish between GPR119 binder and non-binders. Docking scores from AutoDock Vina and experimental data obtained from in-lab assays and GlassDB were used as features for this model. This repository contains all the scripts and the subsequent data obtained for this pipeline. For a comprehensive understanding of the results and the potential uses of the models derived, please refer to the concluding remarks at the end of this document.
+This project focuses on reducing the experimental search space by computationally detecting GPR119 ligands using machine learning techniques. Transfer learning is leveraged here by employing a pre-trained model: **[ChemBERTa](https://arxiv.org/abs/2010.09885)** to build classifiers for distinguishing between GPR119 binder and non-binders. Docking scores from AutoDock Vina and experimental data obtained from in-lab assays and GlassDB were used as features for this model. This repository contains all the scripts and the subsequent data obtained for this pipeline. For a comprehensive understanding of the results and the potential uses of the models derived, please refer to the concluding remarks at the end of this document.
 
 ## Project outline:
 <p align="center">
@@ -25,6 +25,11 @@ This project focuses on reducing the experimental search space by computationall
         - The PubChem IDs (CIDs) were derived using the given CAS numbers via the script: [Adding_PubChemID.ipynb](https://colab.research.google.com/drive/16O843ywIjOWKuvpDEvfsmMGSJ8GrKdsY#scrollTo=pf98cWOiVa22)
         - Using these CIDs availiable 3D sdf structures of the negative dataset were obtained by executing `bash sdf.sh`.
         - File conversion from sdf to pdbqt was done using [Meeko](https://github.com/forlilab/Meeko) `bash n_sdf2pdbqt_meeko.sh`.
+        - The docking scripts were prepared and executed in the order:
+            1. neg\_protein.pdbqt
+            2. conf\_all\_n.txt 
+            3. run\_vina\_neg.sh 
+            4. n\_docking\_cmds.sbatch 
 
 - Docking data collection:
     - The scripts used for extracting docking score were run in the order:
