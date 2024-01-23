@@ -14,7 +14,7 @@ This project focuses on reducing the experimental search space by computationall
     - Positive dataset: Sourced from [GlassDB](https://zhanggroup.org/GLASS/) by querying *Homo sapiens* GPR119-ligand interaction data.
         - 1429 GPR119-ligand interaction data was obtained
         - Comes with combined sdf structure file of all of the ligands (Q8TDV5.tsv)
-        - In order to carry out docking, individual sdf files were first obtained by splitting the file using obabel: `obabel Q8TDV5.sdf -O p\_ligand.sdf -m`
+        - In order to carry out docking, individual sdf files were first obtained by splitting the file using obabel: `obabel Q8TDV5.sdf -O p_ligand.sdf -m`
         - Finally, the sdf files were converted to pdbqt format for docking: `obabel \*.sdf -opdbqt -m`
         - The docking scripts were prepared and executed in the order:
             1. pos\_protein.pdbqt (named separetely for positive and negative docking to allow for simultaneous multiple ligand docking runs)
