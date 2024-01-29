@@ -1,7 +1,7 @@
 # Developing a workflow for GPR119 agonist screening using machine learning techniques 
 
 ## Introduction:
-This project focuses on reducing the experimental search space by computationally detecting GPR119 ligands using machine learning techniques. Transfer learning is leveraged here by employing a pre-trained model: **[ChemBERTa](https://arxiv.org/abs/2010.09885)** to build classifiers for distinguishing between GPR119 binder and non-binders. Docking scores from AutoDock Vina and experimental data obtained from in-lab assays and GlassDB were used as features for this model. This repository contains all the scripts and the subsequent data obtained for this pipeline. For a comprehensive understanding of the results and the potential uses of the models derived, please refer to the concluding remarks at the end of this document.
+This project focuses on reducing the experimental search space by computationally detecting GPR119 ligands using machine learning techniques. Transfer learning is leveraged here by employing a pre-trained model: **[ChemBERTa](https://arxiv.org/abs/2010.09885)** to build classifiers for distinguishing between binder and non-binders. Docking scores from AutoDock Vina and experimental data obtained from assays and GlassDB were used as features for this model. This repository contains the publishable scripts and the subsequent data obtained for this pipeline. For a comprehensive understanding of the results and the potential uses of the models derived, please refer to the concluding remarks at the end of this document.
 
 ## Project outline:
 <p align="center">
@@ -21,15 +21,11 @@ This project focuses on reducing the experimental search space by computationall
             2. conf\_all\_p.txt (configuration file for docking)
             3. run\_vina\_pos.sh (bash script for multiple ligand docking of the positive dataset)
             4. p\_docking\_cmds.sbatch (job script to submit to slurm)
-    - Negative dataset: Sourced from Selleck's Anti-infection and Natural Product libraries (previous tested on GPR119 biosensor and known **NOT** to bind to GPR119).
+    - Negative dataset: Sourced from availible libraries.
         - The PubChem IDs (CIDs) were derived using the given CAS numbers via the script: [Adding_PubChemID.ipynb](https://colab.research.google.com/drive/16O843ywIjOWKuvpDEvfsmMGSJ8GrKdsY#scrollTo=pf98cWOiVa22)
         - Using these CIDs availiable 3D sdf structures of the negative dataset were obtained by executing `bash sdf.sh`.
         - File conversion from sdf to pdbqt was done using [Meeko](https://github.com/forlilab/Meeko) `bash n_sdf2pdbqt_meeko.sh`.
-        - The docking scripts were prepared and executed in the order:
-            1. neg\_protein.pdbqt
-            2. conf\_all\_n.txt 
-            3. run\_vina\_neg.sh 
-            4. n\_docking\_cmds.sbatch 
+
 
 - Docking data collection:
     - The scripts used for extracting docking score were run in the order:
@@ -48,8 +44,6 @@ Docking scores and experimental data were used as features for the classificatio
 
 ### 3. LLM model and predictions 
 Originally, the multi-label ChemBERTa classification aimed to capture patterns in non-agreeing instances with a specific focus on recognizing "confusing agonists." Since a lack of equal label representation in the data was realized, a simpler binary classifier leveraging only the agreeing experimental and docking data was implemented. This model aims for a more straightforward distinction between positive and negative instances, acknowledging the limitations posed by the insufficient data for capturing the intricacies of confusing agonists. Model predictions were done on the Anti-diabetic compound library as GPR119 is often a therapeutic target for diabetes.
-- Multi-label: [Multi-label_classification_with_ChemBERTa.ipynb](https://colab.research.google.com/drive/1720FLC2LUZ_Y_Yysk5MNVU_oKv5kNdCd) 
-- Binary: [Classification_with_ChemBERTa.ipynb](https://colab.research.google.com/drive/1NIQIhbKqvZGcaEqI0mABlC4jflefuJFT)
 
 ### 4. Outcomes, conclusions and future applications
 Upon addressing the identified issues, not only was a significant increase in model metrics observed, but the binary model also made more meaningful predictions *(assigning the '11' label to one-third of the Anti-diabetic compound library)*. Hence, for limited experimental data, the established pipeline with binary classification using ChemBERTa has the potential to screen small molecules for potential ligands. 
