@@ -17,10 +17,10 @@ This project focuses on reducing the experimental search space by computationall
         - In order to carry out docking, individual sdf files were first obtained by splitting the file using obabel: `obabel Q8TDV5.sdf -O p_ligand.sdf -m`
         - Finally, the sdf files were converted to pdbqt format for docking: `obabel \*.sdf -opdbqt -m`
         - The docking scripts were prepared and executed in the order:
-            1. pos\_protein.pdbqt (named separetely for positive and negative docking to allow for simultaneous multiple ligand docking runs)
-            2. conf\_all\_p.txt (configuration file for docking)
-            3. run\_vina\_pos.sh (bash script for multiple ligand docking of the positive dataset)
-            4. p\_docking\_cmds.sbatch (job script to submit to slurm)
+            1. protein.pdbqt 
+            2. conf\_all.txt (configuration file for docking)
+            3. run\_vina\.sh (bash script for multiple ligand docking)
+            4. docking\_cmds.sbatch (job script to submit to slurm)
     - Negative dataset: Sourced from availible libraries.
         - The PubChem IDs (CIDs) were derived using the given CAS numbers via the script: [Adding_PubChemID.ipynb](https://colab.research.google.com/drive/16O843ywIjOWKuvpDEvfsmMGSJ8GrKdsY#scrollTo=pf98cWOiVa22)
         - Using these CIDs availiable 3D sdf structures of the negative dataset were obtained by executing `bash sdf.sh`.
@@ -33,13 +33,12 @@ This project focuses on reducing the experimental search space by computationall
        2. Merging\_logs.sh (Merges all of the docking logs obtained from the multiple-ligand docking and stores it in: *all\_logs_n.txt*.)
        3. logs\_extract\_merged.py (Extracts the top binding score in the merged doc *all\_logs_n.txt*.)
        4. Merged\_log.txt
-       5. Cleaning step: `awk ‘/^n_ligand/’ merged_log.txt > output.txt` 
+       5. Cleaning step: `awk ‘/^ligand/’ merged_log.txt > output.txt` 
        6. View output.txt in excel
-     **NOTE:** 'n\_' was replaced with 'p\_' when extracting docking scores for the positive dataset. 
 
 ### 2. Feature selection
 Docking scores and experimental data were used as features for the classification models.
-- Docking data was converted to a binary format using a threshold determined via EC50 values comparable to GPR119 agonist OEA: [BioAssay_Activity.ipynb](https://colab.research.google.com/drive/1lHBy0eFzV4cYg5f3pb8xqcsQuLhCiIyM#scrollTo=qWW7desIV_d9) anything at the threshold and above was labeled with '1' and anything below was '0'.
+- Docking data was converted to a binary format using a threshold determined via EC50 values comparable to the GPCR agonist: [All_data_BioAssay_Activity.ipynb](https://colab.research.google.com/drive/1Z6bVGads8U7UhO1Mp23xJcAhA_8W6v8Z?usp=sharing) anything at the threshold and above was labeled with '1' and anything below was '0'.
 - Experimental data was converted to binary such that '1' was assigned to binding and '0' indicated non-binding.
 
 ### 3. LLM model and predictions 
