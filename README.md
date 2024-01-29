@@ -1,7 +1,7 @@
 # Developing a workflow for GPR119 agonist screening using machine learning techniques 
 
 ## Introduction:
-This project focuses on reducing the experimental search space by computationally detecting GPR119 ligands using machine learning techniques. Transfer learning is leveraged here by employing a pre-trained model: **[ChemBERTa](https://arxiv.org/abs/2010.09885)** to build classifiers for distinguishing between binder and non-binders. Docking scores from AutoDock Vina and experimental data obtained from assays and GlassDB were used as features for this model. This repository contains the publishable scripts and the subsequent data obtained for this pipeline. For a comprehensive understanding of the results and the potential uses of the models derived, please refer to the concluding remarks at the end of this document.
+This project focuses on reducing the experimental search space by computationally detecting ligands for a specific GPCR using machine learning techniques. Transfer learning is leveraged here by employing a pre-trained model: **[ChemBERTa](https://arxiv.org/abs/2010.09885)** to build classifiers for distinguishing between binder and non-binders. Docking scores from AutoDock Vina and experimental data obtained from assays and GlassDB were used as features for this model. This repository contains the publishable scripts and the subsequent data obtained for this pipeline. For a comprehensive understanding of the results and the potential uses of the models derived, please refer to the concluding remarks at the end of this document.
 
 ## Project outline:
 <p align="center">
@@ -38,7 +38,7 @@ This project focuses on reducing the experimental search space by computationall
 
 ### 2. Feature selection
 Docking scores and experimental data were used as features for the classification models.
-- Docking data was converted to a binary format using a threshold determined via EC50 values comparable to the GPCR agonist: [All_data_BioAssay_Activity.ipynb](https://colab.research.google.com/drive/1Z6bVGads8U7UhO1Mp23xJcAhA_8W6v8Z?usp=sharing) anything at the threshold and above was labeled with '1' and anything below was '0'.
+- Docking data was converted to a binary format using a threshold determined via EC50 values comparable to the particular GPCR agonist: [Pos_data_BioAssay_Activity.ipynb](https://colab.research.google.com/drive/1S3Ml0gHAuu9491m7nRKi7jzk3moOOGV0?usp=sharing) anything at the threshold and above was labeled with '1' and anything below was '0'.
 - Experimental data was converted to binary such that '1' was assigned to binding and '0' indicated non-binding.
 
 ### 3. LLM model and predictions 
