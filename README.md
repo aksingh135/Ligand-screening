@@ -5,7 +5,7 @@ This project focuses on reducing the experimental search space by computationall
 
 ## Project outline:
 <p align="center">
-  <img width="550" height="400" alt="image" src="https://github.gatech.edu/storage/user/68782/files/a1ed9476-a5da-4bb1-9dba-19a3925d9267">
+<img width="550" height="400" alt="image" src="https://github.com/aksingh135/Ligand-screening/assets/106146795/bc3ace9c-4105-4af1-b978-f8ae57dac3d6">
 </p>
 
 ## Repository Structure and Script Functionalities
