@@ -1,6 +1,6 @@
 #!/bin/bash
 
-filename="numbers.txt"
+filename="numbers.txt" #text file with all PubChem IDs
 folder="sdfs"
 
 # Create the folder if it doesn't exist
