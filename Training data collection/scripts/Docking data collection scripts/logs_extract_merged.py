@@ -3,10 +3,10 @@ import os
 import csv
 
 # File paths
-input_file_path = '/Users/akshitasingh/Downloads/all_logs_n.txt'
-output_file_directory = '/Users/akshitasingh/Desktop/PPY-LAB/' #needed for the individual output files
+input_file_path = '/path/to/input/file/all_logs.txt'
+output_file_directory = '/path/to/output/directory/' #needed for the individual output files
 output_file_prefix = 'o_temp' #prefix for output files
-merged_logs_file = '/Users/akshitasingh/Desktop/PPY-LAB/merged_log_n.txt'
+merged_logs_file = '/path/to/merged/logs/merged_log.txt'
 
 # REGEX to extract the binding energy tables occuring between pattern1 and pattern2
 pattern1 = r'(\-*\+*\-*\+*\-*\+*\--+)'  # Updated pattern with capturing parentheses
