@@ -21,7 +21,7 @@ This project focuses on reducing the experimental search space by computationall
             2. conf\_all.txt (configuration file for docking)
             3. run\_vina\.sh (bash script for multiple ligand docking)
             4. docking\_cmds.sbatch (job script to submit to slurm)
-    - Negative dataset: Sourced from experimental data.
+    - Negative dataset: Sourced from experimental data (compound libraries from Selleck).
         >**&#9432;** The negative dataset can also be constructed by selecting compounds with EC50 values below the threshold used for defining positive instances in the dataset (see section: Feature selection).
         - The PubChem IDs (CIDs) were derived using the given CAS numbers via the script: [Adding_PubChemID.ipynb](https://colab.research.google.com/drive/16O843ywIjOWKuvpDEvfsmMGSJ8GrKdsY#scrollTo=pf98cWOiVa22)
         - Using these CIDs availiable 3D sdf structures of the negative dataset were obtained by executing `bash sdf.sh`.
