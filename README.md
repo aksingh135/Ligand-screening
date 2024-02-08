@@ -5,7 +5,7 @@ This project focuses on reducing the experimental search space by computationall
 
 ## Project outline:
 <p align="center">
-<img width="550" height="400" alt="image" src="https://github.com/aksingh135/Ligand-screening/assets/106146795/bc3ace9c-4105-4af1-b978-f8ae57dac3d6">
+<img width="550" height="400" alt="image" src="https://github.com/aksingh135/Ligand-screening/assets/106146795/cc0f794b-918b-4c26-9958-9ae28306c66e">
 </p>
 
 ## Repository Structure and Script Functionalities
@@ -37,7 +37,7 @@ This project focuses on reducing the experimental search space by computationall
        6. View output.txt in excel
 
 ### 2. Feature selection
-Docking scores and experimental data were used as features for the classification models.
+Docking scores and previous experimental data were used as features for the classification models.
 - Docking data was converted to a binary format using a threshold determined via EC50 values comparable to the particular GPCR agonist: [Pos_data_BioAssay_Activity.ipynb](https://colab.research.google.com/drive/1S3Ml0gHAuu9491m7nRKi7jzk3moOOGV0?usp=sharing) anything at the threshold and above was labeled with '1' and anything below was '0'.
 - Experimental data was converted to binary such that '1' was assigned to binding and '0' indicated non-binding.
 
