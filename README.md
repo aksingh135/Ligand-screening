@@ -23,7 +23,7 @@ This project focuses on reducing the experimental search space by computationall
             4. docking\_cmds.sbatch (job script to submit to slurm)
     - Negative dataset: Sourced from experimental data (compound libraries from Selleck).
         >**&#9432;** The negative dataset can also be constructed by selecting compounds with EC50 values below the threshold used for defining positive instances in the dataset (see section: Feature selection).
-        - The PubChem IDs (CIDs) were derived using the given CAS numbers via the script: [Adding_PubChemID.ipynb](https://colab.research.google.com/drive/16O843ywIjOWKuvpDEvfsmMGSJ8GrKdsY#scrollTo=pf98cWOiVa22)
+        - The PubChem IDs (CIDs) were derived using the given CAS numbers via the script: [CAS_Adding_PubChemID.ipynb](https://colab.research.google.com/github/aksingh135/Ligand-screening/blob/main/Training%20data%20collection/scripts/Docking_scripts/CAS_Adding_PubChemID.ipynb)
         - Using these CIDs availiable 3D sdf structures of the negative dataset were obtained by executing `bash sdf.sh`.
         - File conversion from sdf to pdbqt was done using [Meeko](https://github.com/forlilab/Meeko) `bash n_sdf2pdbqt_meeko.sh`.
 
@@ -39,7 +39,7 @@ This project focuses on reducing the experimental search space by computationall
 
 ### 2. Feature selection
 Docking scores and previous experimental data were used as features for the classification models.
-- Docking data was converted to a binary format using a threshold determined via EC50 values comparable to the particular GPCR agonist: [Pos_data_BioAssay_Activity.ipynb](https://colab.research.google.com/drive/1S3Ml0gHAuu9491m7nRKi7jzk3moOOGV0?usp=sharing) anything at the threshold and above was labeled with '1' and anything below was '0'.
+- Docking data was converted to a binary format using a threshold determined via EC50 values comparable to the particular GPCR agonist: [Pos_data_BioAssay_Activity.ipynb](https://colab.research.google.com/github/aksingh135/Ligand-screening/blob/main/Feature%20selection/scripts/Pos_data_BioAssay_Activity.ipynb) anything at the threshold and above was labeled with '1' and anything below was '0'.
 - Experimental data was converted to binary such that '1' was assigned to binding and '0' indicated non-binding.
 
 ### 3. LLM model and predictions 
